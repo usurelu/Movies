@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>TopRatedMovies</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+	<button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  </button>
+	<span class="w3-bar-item w3-hide-small w3-left">Movies & Tv Series</span>
+	
+	<input type="text" autocomplete ="off" id="navbar-query" placeholder="Find Movies" class="w3-bar-item">
+	<a href="#" class="w3-bar-item w3-button w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+	<span class="w3-bar-item w3-right w3-hide-small">Logo</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left mysidebar" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="MovieHomePage.jpg" class="w3-circle w3-margin-right" style="width:70px" alt="MovieHomePage">
+    </div>
+	<div class="w3-col s8 w3-bar">
+		<span> <strong>Movies & Tv Shows </strong></span><br>
+	</div>
+    <!--<div class="w3-col s8 w3-bar">
+      <span>Welcome, <strong>Mike</strong></span><br>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </div>-->
+  </div>
+  <hr>
+  <!--<div class="w3-container">
+    <h5>Movies & Tv Shows</h5>
+  </div>-->
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <!--<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>-->
+	<a href="index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-film fa-fw"></i>  Movies</a>
+	<a href="TvSeries.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-video-camera fa-fw"></i>  Tv Series</a>
+    <a href="TopRated.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Top Rated Movies</a>
+    <a href="OscarWinners.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Oscar Winners</a>
+    <a href="MostPopularMovies.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Most Popular Movies</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a>
+	<div class="mypadding w3-large">
+		<a href="https://www.facebook.com/daniel.scaparici" class="fa fa-facebook-official w3-hover-opacity"></a>
+		<a href="https://www.instagram.com/usureludanielconstantin/?hl=en" class="fa fa-instagram w3-hover-opacity"></a>
+		<a href="https://www.snapchat.com/add/danyvdcc" class="fa fa-snapchat w3-hover-opacity"></a>
+		<a href="https://twitter.com/dany_scaparici" class="fa fa-twitter w3-hover-opacity"></a>
+		<a href="https://www.linkedin.com/in/usurelu-daniel-constantin-4b4860131/" class="fa fa-linkedin w3-hover-opacity"></a>
+	</div>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main mypage-content">
+	<table class="chart full-width" data-caller-name="chart-moviemeter">
+    <colgroup>
+        <col class="chartTableColumnPoster">
+        <col class="chartTableColumnTitle">
+        <col class="chartTableColumnIMDbRating">
+    </colgroup>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Rank &amp; Title</th>
+            <th>IMDb Rating</th>
+        </tr>
+    </thead>
+    <tbody class="lister-list">
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3778644/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_1">
+                    <img src="https://m.media-amazon.com/images/M/MV5BOTM2NTI3NTc3Nl5BMl5BanBnXkFtZTgwNzM1OTQyNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3778644/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_1"
+                    title="Ron Howard (dir.), Alden Ehrenreich, Woody Harrelson">Solo: A Star Wars Story</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,2 based on 80.166 user ratings">7,2</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5463162/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_2">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjI3Njg3MzAxNF5BMl5BanBnXkFtZTgwNjI2OTY0NTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5463162/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_2"
+                    title="David Leitch (dir.), Ryan Reynolds, Josh Brolin">Deadpool 2</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,1 based on 137.640 user ratings">8,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4154756/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_3">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4154756/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_3"
+                    title="Anthony Russo (dir.), Robert Downey Jr., Chris Hemsworth">Avengers: Infinity War</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,8 based on 363.847 user ratings">8,8</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4881806/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_4">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjhmZWFlZmEtNTBhMC00OGMwLWE2YTYtNjU5NDk1MTc5ZmQ2XkEyXkFqcGdeQXVyMjMxOTE0ODA@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4881806/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_4"
+                    title="J.A. Bayona (dir.), Bryce Dallas Howard, Chris Pratt">Jurassic World: Fallen Kingdom</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,6 based on 2.257 user ratings">7,6</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3799232/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_5">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNjQ0Mzk0OTE5MF5BMl5BanBnXkFtZTgwNDkyOTI0NTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3799232/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_5"
+                    title="Vince Marcello (dir.), Megan du Plessis, Lincoln Pearson">The Kissing Booth</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,5 based on 13.307 user ratings">6,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1825683/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_6">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1825683/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_6"
+                    title="Ryan Coogler (dir.), Chadwick Boseman, Michael B. Jordan">Black Panther</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,5 based on 322.507 user ratings">7,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6644200/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_7">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6644200/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_7"
+                    title="John Krasinski (dir.), Emily Blunt, John Krasinski">A Quiet Place</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,9 based on 118.522 user ratings">7,9</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2704998/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_8">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjQxMDE5NDg0NV5BMl5BanBnXkFtZTgwNTA5MDE2NDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2704998/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_8"
+                    title="John Francis Daley (dir.), Jason Bateman, Rachel McAdams">Game Night</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,1 based on 71.590 user ratings">7,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5164214/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_9">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjAyNDEyMzc4Ml5BMl5BanBnXkFtZTgwMjEzNjM0NTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5164214/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_9"
+                    title="Gary Ross (dir.), Sandra Bullock, Cate Blanchett">Ocean's Eight</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1485796/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_10">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjI1NDYzNzY2Ml5BMl5BanBnXkFtZTgwODQwODczNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1485796/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_10"
+                    title="Michael Gracey (dir.), Hugh Jackman, Michelle Williams">The Greatest Showman</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,7 based on 128.620 user ratings">7,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2873282/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_11">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTA3MDkxOTc4NDdeQTJeQWpwZ15BbWU4MDAxNzgyNTQz._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2873282/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_11"
+                    title="Francis Lawrence (dir.), Jennifer Lawrence, Joel Edgerton">Red Sparrow</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,6 based on 70.167 user ratings">6,6</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6306064/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_12">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTkxMTI2MjE4OF5BMl5BanBnXkFtZTgwMjIyODQzNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6306064/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_12"
+                    title="Baltasar Kormákur (dir.), Shailene Woodley, Sam Claflin">Adrift</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,8 based on 1.779 user ratings">6,8</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4575576/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_13">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjAzOTM2OTAyNF5BMl5BanBnXkFtZTgwNTg5ODg1NTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4575576/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_13"
+                    title="Marc Forster (dir.), Hayley Atwell, Ewan McGregor">Christopher Robin</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3685236/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_14">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTczMTA5ODMxOV5BMl5BanBnXkFtZTgwNTgwNDkzNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3685236/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_14"
+                    title="Alex Richanbach (dir.), Gwen Elizabeth Duchon, Gillian Jacobs">Ibiza</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,1 based on 4.090 user ratings">5,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2798920/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_15">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTk2Mjc2NzYxNl5BMl5BanBnXkFtZTgwMTA2OTA1NDM@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2798920/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_15"
+                    title="Alex Garland (dir.), Natalie Portman, Jennifer Jason Leigh">Annihilation</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,0 based on 135.589 user ratings">7,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1431045/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_16">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYzE5MjY1ZDgtMTkyNC00MTMyLThhMjAtZGI5OTE1NzFlZGJjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1431045/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_16"
+                    title="Tim Miller (dir.), Ryan Reynolds, Morena Baccarin">Deadpool</a>
+                <span class="secondaryInfo">(2016)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,0 based on 736.307 user ratings">8,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5164432/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_17">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTMyZDdiMzUtZjcxNS00Mjc3LTljY2UtYjI4YmY5NzJlYjc1XkEyXkFqcGdeQXVyMTA5OTkwNTc@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5164432/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_17"
+                    title="Greg Berlanti (dir.), Nick Robinson, Jennifer Garner">Love, Simon</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,0 based on 30.198 user ratings">8,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt7784604/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_18">
+                    <img src="https://m.media-amazon.com/images/M/MV5BOTU5MDg3OGItZWQ1Ny00ZGVmLTg2YTUtMzBkYzQ1YWIwZjlhXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt7784604/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_18"
+                    title="Ari Aster (dir.), Toni Collette, Milly Shapiro">Hereditary</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,7 based on 921 user ratings">7,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1365519/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_19">
+                    <img src="https://m.media-amazon.com/images/M/MV5BOTY4NDcyZGQtYmVlNy00ODgwLTljYTMtYzQ2OTE3NDhjODMwXkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1365519/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_19"
+                    title="Roar Uthaug (dir.), Alicia Vikander, Dominic West">Tomb Raider</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,6 based on 74.311 user ratings">6,6</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt0108255/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_20">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMzRmNGY0NTctYTNkNC00M2FkLWI0ZTgtYTE5ODhiZjYxMDkxXkEyXkFqcGdeQXVyNjE5MjUyOTM@._V1_UY67_CR1,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt0108255/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_20"
+                    title="Annabel Jankel (dir.), Bob Hoskins, John Leguizamo">Super Mario Bros.</a>
+                <span class="secondaryInfo">(1993)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="4,0 based on 42.833 user ratings">4,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6857166/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_21">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTc0MDY2MDI3Ml5BMl5BanBnXkFtZTgwNjU2MzIyNTM@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6857166/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_21"
+                    title="Bill Holderman (dir.), Diane Keaton, Jane Fonda">Book Club</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,3 based on 2.769 user ratings">6,3</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1620680/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_22">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjMxNjQ5MTI3MV5BMl5BanBnXkFtZTgwMjQ2MTAyNDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1620680/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_22"
+                    title="Ava DuVernay (dir.), Storm Reid, Oprah Winfrey">A Wrinkle in Time</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="4,1 based on 16.065 user ratings">4,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6499752/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_23">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjI0NzcyMjM5Ml5BMl5BanBnXkFtZTgwMzk2NzAyNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6499752/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_23"
+                    title="Leigh Whannell (dir.), Logan Marshall-Green, Richard Anastasios">Upgrade</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,8 based on 3.135 user ratings">7,8</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3606756/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_24">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTEzNzY0OTg0NTdeQTJeQWpwZ15BbWU4MDU3OTg3MjUz._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3606756/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_24"
+                    title="Brad Bird (dir.), Craig T. Nelson, Holly Hunter">Incredibles 2</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,7 based on 49 user ratings">8,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1677720/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_25">
+                    <img src="https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1677720/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_25"
+                    title="Steven Spielberg (dir.), Tye Sheridan, Olivia Cooke">Ready Player One</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,8 based on 130.030 user ratings">7,8</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt0360556/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_26">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZmM1ZGJkZDgtNzBlNS00YjkyLTk3NGEtZTIxMGVkMTk2Yjg1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt0360556/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_26"
+                    title="Ramin Bahrani (dir.), Michael B. Jordan, Aaron Davis">Fahrenheit 451</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="4,9 based on 5.901 user ratings">4,9</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3501632/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_27">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjMyNDkzMzI1OF5BMl5BanBnXkFtZTgwODcxODg5MjI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3501632/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_27"
+                    title="Taika Waititi (dir.), Chris Hemsworth, Tom Hiddleston">Thor: Ragnarok</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,9 based on 339.736 user ratings">7,9</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5095030/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_28">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYjcyYTk0N2YtMzc4ZC00Y2E0LWFkNDgtNjE1MzZmMGE1YjY1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5095030/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_28"
+                    title="Peyton Reed (dir.), Evangeline Lilly, Hannah John-Kamen">Ant-Man and the Wasp</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5619332/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_29">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTkzOTk0MjYwM15BMl5BanBnXkFtZTgwNTE5ODQxNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5619332/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_29"
+                    title="Ben Falcone (dir.), Gillian Jacobs, Melissa McCarthy">Life of the Party</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,5 based on 4.342 user ratings">5,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5737536/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_30">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMWMxMDZhNjEtYjA3ZS00MzE5LTkwN2MtNmNhMzJiNjQwMzQ1XkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5737536/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_30"
+                    title="James Franco (dir.), James Franco, Suki Waterhouse">Future World</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="3,1 based on 1.234 user ratings">3,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5052474/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_31">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjgyOWRhMDctZTZlNC00M2I1LWI0NDQtYzlmODdmYjY2MThiXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5052474/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_31"
+                    title="Stefano Sollima (dir.), Josh Brolin, Benicio Del Toro">Sicario: Day of the Soldado</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1727824/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_32">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1727824/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_32"
+                    title="Bryan Singer (dir.), Rami Malek, Joseph Mazzello">Bohemian Rhapsody</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3860916/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_33">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZTczZWEyOTktODNmMC00NDgzLTk3NTktYjllN2Y4MWMxOGViXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3860916/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_33"
+                    title="Ben Howling (dir.), Martin Freeman, Anthony Hayes">Cargo</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,4 based on 11.742 user ratings">6,4</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4015500/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_34">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMmU3NzY3MmItYjhmMS00ZmNkLTkwY2EtMTkyMjhlNThiMzQ5XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4015500/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_34"
+                    title="Jennifer Fox (dir.), Elizabeth Debicki, Laura Dern">The Tale</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,2 based on 1.688 user ratings">7,2</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6212478/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_35">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYTc4ZWQyODItMTZjYy00OTVmLWEzMjUtNTlkOTJjMzhiYzAxXkEyXkFqcGdeQXVyODE0MDY3NzY@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6212478/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_35"
+                    title="Bart Layton (dir.), Evan Peters, Blake Jenner">American Animals</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,3 based on 589 user ratings">7,3</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3721964/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_36">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjAyMTk2MTQ3Ml5BMl5BanBnXkFtZTgwNDQ2ODE0NDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3721964/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_36"
+                    title="Nash Edgerton (dir.), Joel Edgerton, Charlize Theron">Gringo</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,0 based on 7.113 user ratings">6,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6565702/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_37">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZWUyMWVlMjEtNjRkYS00YjNlLThmODItYzc1MTQ5NzBiOGM2XkEyXkFqcGdeQXVyNjY5NDczMTk@._V1_UY67_CR3,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6565702/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_37"
+                    title="Simon Kinberg (dir.), Olivia Munn, Jennifer Lawrence">X-Men: Dark Phoenix</a>
+                <span class="secondaryInfo">(2019)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2527336/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_38">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2527336/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_38"
+                    title="Rian Johnson (dir.), Daisy Ridley, John Boyega">Star Wars: Episode VIII - The Last Jedi</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,3 based on 386.617 user ratings">7,3</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1563742/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_39">
+                    <img src="https://m.media-amazon.com/images/M/MV5BM2E5MWYwYTktMmIxZC00MWVkLTk4YjctNGU1OGVjMDIwNzM2XkEyXkFqcGdeQXVyNTAwODk1NzY@._V1_UY67_CR1,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1563742/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_39"
+                    title="Rob Greenberg (dir.), Anna Faris, Eva Longoria">Overboard</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,5 based on 4.313 user ratings">5,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5164184/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_40">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjAxMjQ1NjM5Ml5BMl5BanBnXkFtZTgwOTI1OTY0NTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5164184/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_40"
+                    title="Anthony Byrne (dir.), Natalie Dormer, Emily Ratajkowski">In Darkness</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,8 based on 2.045 user ratings">5,8</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6791096/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_41">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjA5MjZkNmQtNmI1ZS00M2RiLWFlMmUtNGU1ZjA4YTA0NjliXkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_UY67_CR2,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6791096/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_41"
+                    title="Abby Kohn (dir.), Amy Schumer, Michelle Williams">I Feel Pretty</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="4,7 based on 10.572 user ratings">4,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2380307/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_42">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_UY67_CR1,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2380307/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_42"
+                    title="Lee Unkrich (dir.), Anthony Gonzalez, Gael García Bernal">Coco</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,5 based on 179.831 user ratings">8,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6495770/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_43">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjEyMTU5MTk1N15BMl5BanBnXkFtZTgwMzIzMzczNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6495770/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_43"
+                    title="Tim Kirkby (dir.), Johnny Knoxville, Brigette Lundy-Paine">Action Point</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,1 based on 821 user ratings">5,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1137450/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_44">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTkzNjU3MjE0MF5BMl5BanBnXkFtZTgwNTIyNDk0NDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1137450/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_44"
+                    title="Eli Roth (dir.), Bruce Willis, Vincent D'Onofrio">Death Wish</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,4 based on 19.605 user ratings">6,4</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2283362/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_45">
+                    <img src="https://m.media-amazon.com/images/M/MV5BODQ0NDhjYWItYTMxZi00NTk2LWIzNDEtOWZiYWYxZjc2MTgxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2283362/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_45"
+                    title="Jake Kasdan (dir.), Dwayne Johnson, Karen Gillan">Jumanji: Welcome to the Jungle</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,0 based on 168.338 user ratings">7,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4154664/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_46">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTQ3MjIyMDQxOF5BMl5BanBnXkFtZTgwNDIxNTM2OTE@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4154664/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_46"
+                    title="Anna Boden (dir.), Brie Larson, Lee Pace">Captain Marvel</a>
+                <span class="secondaryInfo">(2019)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1259528/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_47">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMzYyODcwMDAyM15BMl5BanBnXkFtZTgwOTA4MjIwNDI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1259528/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_47"
+                    title="Christian Gudegast (dir.), Gerard Butler, Pablo Schreiber">Den of Thieves</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,0 based on 36.342 user ratings">7,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1285009/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_48">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTY1OTIwODgzMV5BMl5BanBnXkFtZTgwMzUyMDgzNDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1285009/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_48"
+                    title="Johannes Roberts (dir.), Bailee Madison, Christina Hendricks">The Strangers: Prey at Night</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,4 based on 8.955 user ratings">5,4</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2250912/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_49">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTk4ODQ1MzgzNl5BMl5BanBnXkFtZTgwMTMyMzM4MTI@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2250912/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_49"
+                    title="Jon Watts (dir.), Tom Holland, Michael Keaton">Spider-Man: Homecoming</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,5 based on 329.801 user ratings">7,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4912910/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_50">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTk3NDY5MTU0NV5BMl5BanBnXkFtZTgwNDI3MDE1NTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4912910/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_50"
+                    title="Christopher McQuarrie (dir.), Tom Cruise, Rebecca Ferguson">Mission: Impossible - Fallout</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt7153766/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_51">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTYzMDYzMzA1MV5BMl5BanBnXkFtZTgwODUzODg2NDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt7153766/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_51"
+                    title="Steven Soderbergh (dir.), Claire Foy, Joshua Leonard">Unsane</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,6 based on 8.501 user ratings">6,6</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6850820/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_52">
+                    <img src="https://m.media-amazon.com/images/M/MV5BODQ5NjdlMjYtODI3Yi00M2ZiLTk5MTItOTVmM2MxMzc0M2I4XkEyXkFqcGdeQXVyNjgzODcxMjQ@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6850820/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_52"
+                    title="Pierre Morel (dir.), Jennifer Garner, Juan Pablo Raba">Peppermint</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5834262/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_53">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMDhhNWE3NmQtY2Y1OC00MzQ4LWJhNjktZWEzNjEzMTE3YWIyXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5834262/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_53"
+                    title="Drew Pearce (dir.), Jodie Foster, Sofia Boutella">Hotel Artemis</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1469304/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_54">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTA4MjQ0ODQzNF5BMl5BanBnXkFtZTgwNzA5NjYzMjI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1469304/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_54"
+                    title="Seth Gordon (dir.), Dwayne Johnson, Zac Efron">Baywatch</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,6 based on 105.895 user ratings">5,6</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2388771/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_55">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMWM2ZjAyODUtNTg0NC00YzEwLTk1NDgtNmRhZTRkYjQ2NTk2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2388771/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_55"
+                    title="Andy Serkis (dir.), Benedict Cumberbatch, Andy Serkis">Mowgli</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1308728/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_56">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYWE5ZGUyNTUtZWJmYi00ODUyLThiZjctNjdjZGU1YTM5NjI0XkEyXkFqcGdeQXVyNzQwNjY4NTg@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1308728/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_56"
+                    title="Brian Henson (dir.), Melissa McCarthy, Elizabeth Banks">The Happytime Murders</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt0369610/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_57">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNWEyNTE0YTEtY2FkMi00MmY3LTg4MWMtODdjYjRkNGM4ZTZhXkEyXkFqcGdeQXVyMzI0NDc4ODY@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt0369610/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_57"
+                    title="Colin Trevorrow (dir.), Chris Pratt, Bryce Dallas Howard">Jurassic World</a>
+                <span class="secondaryInfo">(2015)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,0 based on 493.856 user ratings">7,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6826438/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_58">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMDNjZjkyNjQtNWMyMC00ODA5LTgyODctOGRiOWUwYTAzOWVjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UY67_CR1,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6826438/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_58"
+                    title="Abhishek Sharma (dir.), John Abraham, Diana Penty">Parmanu: The Story of Pokhran</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,6 based on 3.434 user ratings">8,6</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2557478/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_59">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjI3Nzg0MTM5NF5BMl5BanBnXkFtZTgwOTE2MTgwNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2557478/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_59"
+                    title="Steven S. DeKnight (dir.), John Boyega, Scott Eastwood">Pacific Rim: Uprising</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,7 based on 44.905 user ratings">5,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1413492/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_60">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTEzMjk3NzkxMV5BMl5BanBnXkFtZTgwNjY2NDczNDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1413492/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_60"
+                    title="Nicolai Fuglsig (dir.), Chris Hemsworth, Michael Shannon">12 Strong</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,6 based on 28.280 user ratings">6,6</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt0974015/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_61">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYWVhZjZkYTItOGIwYS00NmRkLWJlYjctMWM0ZjFmMDU4ZjEzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt0974015/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_61"
+                    title="Zack Snyder (dir.), Ben Affleck, Gal Gadot">Justice League</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,7 based on 255.472 user ratings">6,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5691024/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_62">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZDdjOWMwNjYtNWE3Zi00Y2JjLTgzODItNTg1YjNjM2U3ZWMyXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5691024/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_62"
+                    title="Raja Gosnell (dir.), Alan Cumming, Will Arnett">Show Dogs</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="2,9 based on 1.488 user ratings">2,9</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6738136/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_63">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzZhZjJlNzMtZmVlNi00MTIxLTg3OTMtMTI2NTVkYWQ4NDQyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6738136/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_63"
+                    title="Coralie Fargeat (dir.), Matilda Anna Ingrid Lutz, Kevin Janssens">Revenge</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,4 based on 8.069 user ratings">6,4</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2854926/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_64">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzk4NDM3NjkwNF5BMl5BanBnXkFtZTgwNTk5MzkzNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2854926/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_64"
+                    title="Jeff Tomsic (dir.), Isla Fisher, Annabelle Wallis">Tag</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6911608/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_65">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjEwMTM3OTI1NV5BMl5BanBnXkFtZTgwNDk5NTY0NTM@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6911608/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_65"
+                    title="Ol Parker (dir.), Lily James, Amanda Seyfried">Mamma Mia! Here We Go Again</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3896198/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_66">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3896198/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_66"
+                    title="James Gunn (dir.), Chris Pratt, Zoe Saldana">Guardians of the Galaxy Vol. 2</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,7 based on 384.153 user ratings">7,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4154796/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_67">
+                    <img src="https://m.media-amazon.com/images/G/01/imdb/images/nopicture/67x98/film-2500266839._CB499559129_.png" class="posterImage"
+                        alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4154796/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_67"
+                    title="Anthony Russo (dir.), Josh Brolin, Karen Gillan">Untitled Avengers Movie</a>
+                <span class="secondaryInfo">(2019)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1396484/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_68">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZDVkZmI0YzAtNzdjYi00ZjhhLWE1ODEtMWMzMWMzNDA0NmQ4XkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1396484/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_68"
+                    title="Andy Muschietti (dir.), Bill Skarsgård, Jaeden Lieberher">It</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,5 based on 276.959 user ratings">7,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5580390/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_69">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNGNiNWQ5M2MtNGI0OC00MDA2LWI5NzEtMmZiYjVjMDEyOWYzXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5580390/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_69"
+                    title="Guillermo del Toro (dir.), Sally Hawkins, Octavia Spencer">The Shape of Water</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,4 based on 218.699 user ratings">7,4</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5027774/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_70">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjMxNzgwMDUyMl5BMl5BanBnXkFtZTgwMTQ0NTIyNDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5027774/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_70"
+                    title="Martin McDonagh (dir.), Frances McDormand, Woody Harrelson">Three Billboards Outside Ebbing, Missouri</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,2 based on 240.667 user ratings">8,2</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt0451279/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_71">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDFmZjgyMTEtYTk5MC00NmY0LWJhZjktOWY2MzI5YjkzODNlXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt0451279/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_71"
+                    title="Patty Jenkins (dir.), Gal Gadot, Chris Pine">Wonder Woman</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,5 based on 415.011 user ratings">7,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1856101/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_72">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1856101/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_72"
+                    title="Denis Villeneuve (dir.), Harrison Ford, Ryan Gosling">Blade Runner 2049</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,1 based on 298.988 user ratings">8,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2015381/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_73">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTAwMjU5OTgxNjZeQTJeQWpwZ15BbWU4MDUxNDYxODEx._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2015381/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_73"
+                    title="James Gunn (dir.), Chris Pratt, Vin Diesel">Guardians of the Galaxy</a>
+                <span class="secondaryInfo">(2014)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,1 based on 847.780 user ratings">8,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1270797/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_74">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTU3MTQyNjQwM15BMl5BanBnXkFtZTgwNDgxNDczNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1270797/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_74"
+                    title="Ruben Fleischer (dir.), Tom Hardy, Woody Harrelson">Venom</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3748528/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_75">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3748528/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_75"
+                    title="Gareth Edwards (dir.), Felicity Jones, Diego Luna">Rogue One</a>
+                <span class="secondaryInfo">(2016)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,8 based on 427.964 user ratings">7,8</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1590193/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_76">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTc0NDg1MjI4OV5BMl5BanBnXkFtZTgwMDIwMTEwNDI@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1590193/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_76"
+                    title="Jaume Collet-Serra (dir.), Liam Neeson, Vera Farmiga">The Commuter</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,3 based on 48.120 user ratings">6,3</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5013056/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_77">
+                    <img src="https://m.media-amazon.com/images/M/MV5BN2YyZjQ0NTEtNzU5MS00NGZkLTg0MTEtYzJmMWY3MWRhZjM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5013056/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_77"
+                    title="Christopher Nolan (dir.), Fionn Whitehead, Barry Keoghan">Dunkirk</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,0 based on 393.079 user ratings">8,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4500922/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_78">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTYyNzk3MDc2NF5BMl5BanBnXkFtZTgwMDk3OTM1NDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4500922/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_78"
+                    title="Wes Ball (dir.), Dylan O'Brien, Ki Hong Lee">Maze Runner: The Death Cure</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,3 based on 58.579 user ratings">6,3</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5478478/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_79">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNjFhZjM4ZDYtMGRjYi00Yzc2LWExYmEtMDQ3NzA4ODU4YTljXkEyXkFqcGdeQXVyNjkwMzU3NDI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5478478/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_79"
+                    title="Scott Cooper (dir.), Scott Shepherd, Rosamund Pike">Hostiles</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,2 based on 27.488 user ratings">7,2</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5397194/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_80">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjE0MjIwMDE2MV5BMl5BanBnXkFtZTgwMzM5MDQzNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5397194/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_80"
+                    title="Andrew Niccol (dir.), Clive Owen, Afiya Bennett">Anon</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,1 based on 12.441 user ratings">6,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1502407/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_81">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTkyNzYyODU0M15BMl5BanBnXkFtZTgwOTYzMDQzNTM@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1502407/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_81"
+                    title="David Gordon Green (dir.), Judy Greer, Jamie Lee Curtis">Halloween</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1901024/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_82">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTgyODU5NTYzMF5BMl5BanBnXkFtZTgwMjA2OTcyNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1901024/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_82"
+                    title="Alexandros Avranas (dir.), Jim Carrey, Charlotte Gainsbourg">True Crimes</a>
+                <span class="secondaryInfo">(2016)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="4,7 based on 2.685 user ratings">4,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5649108/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_83">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDcyNDA4NDAzN15BMl5BanBnXkFtZTgwODQxMDQ5NDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5649108/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_83"
+                    title="Cory Finley (dir.), Olivia Cooke, Anya Taylor-Joy">Thoroughbreds</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,0 based on 8.054 user ratings">7,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2531344/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_84">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjE0ODIzNjkzMl5BMl5BanBnXkFtZTgwODQ3MzU4NDM@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2531344/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_84"
+                    title="Kay Cannon (dir.), Kathryn Newton, Leslie Mann">Blockers</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,8 based on 14.951 user ratings">6,8</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt6802308/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_85">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTY0NjUzNjYwOV5BMl5BanBnXkFtZTgwMzY1MDM0NDM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt6802308/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_85"
+                    title="Clint Eastwood (dir.), Alek Skarlatos, Anthony Sadler">The 15:17 to Paris</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,1 based on 10.666 user ratings">5,1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt0317705/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_86">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTY5OTU0OTc2NV5BMl5BanBnXkFtZTcwMzU4MDcyMQ@@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt0317705/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_86"
+                    title="Brad Bird (dir.), Craig T. Nelson, Samuel L. Jackson">The Incredibles</a>
+                <span class="secondaryInfo">(2004)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,0 based on 545.003 user ratings">8,0</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5610554/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_87">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTU0OTM4NTMyMF5BMl5BanBnXkFtZTgwNDA5MzUwNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5610554/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_87"
+                    title="Jason Reitman (dir.), Charlize Theron, Mackenzie Davis">Tully</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,4 based on 5.764 user ratings">7,4</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4463816/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_88">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYmEzOGVmNWQtZDBiMC00OTk4LTg3OWQtMzc2MzgxNjlkY2JjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4463816/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_88"
+                    title="Vaughn Stein (dir.), Margot Robbie, Simon Pegg">Terminal</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="5,2 based on 3.954 user ratings">5,2</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5117670/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_89">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMzI5MzZmZjItOGQzZC00NjNiLWFjMjQtMGNhY2NmNDMyNGM1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5117670/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_89"
+                    title="Will Gluck (dir.), James Corden, Fayssal Bazzi">Peter Rabbit</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="6,6 based on 15.050 user ratings">6,6</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt7349662/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_90">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDI3NTc2NTYtNWU3OC00ODUwLThiMjMtMDZmMzQzNDJkY2Y3XkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt7349662/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_90"
+                    title="Spike Lee (dir.), Adam Driver, Laura Harrier">BlacKkKlansman</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3450958/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_91">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDNmYTQzMDEtMmY0MS00OTNjLTk4MjItMDZhMzkzOGI3MzA0XkEyXkFqcGdeQXVyNjk5NDA3OTk@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3450958/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_91"
+                    title="Matt Reeves (dir.), Andy Serkis, Woody Harrelson">War for the Planet of the Apes</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,5 based on 173.058 user ratings">7,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt0448115/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_92">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTkxNDU1NzMwOF5BMl5BanBnXkFtZTgwMjA5MDkwNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt0448115/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_92"
+                    title="David F. Sandberg (dir.), Ross Butler, Zachary Levi">Shazam!</a>
+                <span class="secondaryInfo">(2019)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt4779682/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_93">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTg1ODc2NDQzNF5BMl5BanBnXkFtZTgwOTY1OTUyNTM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt4779682/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_93"
+                    title="Jon Turteltaub (dir.), Ruby Rose, Jason Statham">The Meg</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1745960/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_94">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNjMxODcxNTcwMl5BMl5BanBnXkFtZTgwNjM5MzI2NTM@._V1_UY67_CR11,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1745960/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_94"
+                    title="Joseph Kosinski (dir.), Tom Cruise">Top Gun: Maverick</a>
+                <span class="secondaryInfo">(2019)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5758778/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_95">
+                    <img src="https://m.media-amazon.com/images/M/MV5BOGM3MzQwYzItNDA1Ny00MzIyLTg5Y2QtYTAwMzNmMDU2ZDgxXkEyXkFqcGdeQXVyMjMxOTE0ODA@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5758778/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_95"
+                    title="Rawson Marshall Thurber (dir.), Dwayne Johnson, Pablo Schreiber">Skyscraper</a>
+                <span class="secondaryInfo">(2018)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt3498820/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_96">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt3498820/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_96"
+                    title="Anthony Russo (dir.), Chris Evans, Robert Downey Jr.">Captain America: Civil War</a>
+                <span class="secondaryInfo">(2016)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,8 based on 503.987 user ratings">7,8</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt5052448/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_97">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt5052448/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_97"
+                    title="Jordan Peele (dir.), Daniel Kaluuya, Allison Williams">Get Out</a>
+                <span class="secondaryInfo">(2017)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,7 based on 308.372 user ratings">7,7</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt2395427/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_98">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt2395427/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_98"
+                    title="Joss Whedon (dir.), Robert Downey Jr., Chris Evans">Avengers: Age of Ultron</a>
+                <span class="secondaryInfo">(2015)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,4 based on 587.101 user ratings">7,4</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt1211837/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_99">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt1211837/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_99"
+                    title="Scott Derrickson (dir.), Benedict Cumberbatch, Chiwetel Ejiofor">Doctor Strange</a>
+                <span class="secondaryInfo">(2016)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="7,5 based on 424.717 user ratings">7,5</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="posterColumn">
+                <a href="https://www.imdb.com/title/tt0107290/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_100">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_UX45_CR0,0,45,67_AL_.jpg"
+                        class="posterImage" alt="Poster">
+                </a>
+            </td>
+            <td class="titleColumn">
+                <a href="https://www.imdb.com/title/tt0107290/?pf_rd_m=A2FGELUUNOQJNL&amp;pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&amp;pf_rd_r=RDRZCEXXF3F8ZMQKEDXK&amp;pf_rd_s=center-1&amp;pf_rd_t=15506&amp;pf_rd_i=moviemeter&amp;ref_=chtmvm_tt_100"
+                    title="Steven Spielberg (dir.), Sam Neill, Laura Dern">Jurassic Park</a>
+                <span class="secondaryInfo">(1993)</span>
+            </td>
+            <td class="ratingColumn imdbRating">
+                <strong title="8,1 based on 725.713 user ratings">8,1</strong>
+            </td>
+        </tr>
+    </tbody>
+</table>
+  
+  
+  <!-- End page content -->
+</div>
+
+<script>
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+		if(overlayBg.style.display == "block"){
+			overlayBg.style.display = "none";
+			$('#mySidebar').stop().animate({
+			width: "toggle"
+		}, 1000);
+		}
+		else {
+			overlayBg.style.display = "block";
+			$('#mySidebar').stop().animate({
+			width: "toggle"
+		}, 1000);
+		}
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+	$('#mySidebar').stop().animate({
+		width: "toggle"
+		}, 1000, function() {
+        overlayBg.style.display = "none";});
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

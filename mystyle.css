@@ -1,0 +1,70 @@
+.mypadding {
+	padding-right:16px;
+	padding-bottom:16px;
+	padding-left:16px;
+}
+.mymargin {
+	margin-top:16px;
+	margin-right:16px;
+	margin-bottom:16px;
+	margin-left:16px;
+}
+.mypage-content {
+	margin-left:300px;
+	margin-top:43px;
+}
+
+.mysidebar {
+	z-index:3;
+	width:300px;
+}
+a:link{
+	text-decoration: none;
+	color:black !important;
+}
+a:active{
+	color:black !important;
+}
+a:visited{
+
+}
+
+.carouselImage{
+	width:100%;
+	height:500px;
+}
+
+.antman{
+	height:275px;
+	width:100%;
+	margin-top:16px;
+}
+.mypicture{
+	padding-top:16px;
+	width:100%;
+}
+.boxobject{
+	padding-left:15px;
+	padding-right:15px;
+}
+.myspanhref{
+	color:#337ab7;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.posterImage{
+	width: 45px;
+	height: 67px;
+}

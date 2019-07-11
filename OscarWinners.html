@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>OscarWinners</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+	<button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  </button>
+	<span class="w3-bar-item w3-hide-small w3-left">Movies & Tv Series</span>
+	
+	<input type="text" autocomplete ="off" id="navbar-query" placeholder="Find Movies" class="w3-bar-item">
+	<a href="#" class="w3-bar-item w3-button w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+	<span class="w3-bar-item w3-right w3-hide-small">Logo</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left mysidebar" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="MovieHomePage.jpg" class="w3-circle w3-margin-right" style="width:70px" alt="MovieHomePage">
+    </div>
+	<div class="w3-col s8 w3-bar">
+		<span> <strong>Movies & Tv Shows </strong></span><br>
+	</div>
+    <!--<div class="w3-col s8 w3-bar">
+      <span>Welcome, <strong>Mike</strong></span><br>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </div>-->
+  </div>
+  <hr>
+  <!--<div class="w3-container">
+    <h5>Movies & Tv Shows</h5>
+  </div>-->
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <!--<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>-->
+	<a href="index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-film fa-fw"></i>  Movies</a>
+	<a href="TvSeries.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-video-camera fa-fw"></i>  Tv Series</a>
+    <a href="TopRated.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Top Rated Movies</a>
+    <a href="OscarWinners.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Oscar Winners</a>
+    <a href="MostPopularMovies.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Most Popular Movies</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a>
+	<div class="mypadding w3-large">
+		<a href="https://www.facebook.com/daniel.scaparici" class="fa fa-facebook-official w3-hover-opacity"></a>
+		<a href="https://www.instagram.com/usureludanielconstantin/?hl=en" class="fa fa-instagram w3-hover-opacity"></a>
+		<a href="https://www.snapchat.com/add/danyvdcc" class="fa fa-snapchat w3-hover-opacity"></a>
+		<a href="https://twitter.com/dany_scaparici" class="fa fa-twitter w3-hover-opacity"></a>
+		<a href="https://www.linkedin.com/in/usurelu-daniel-constantin-4b4860131/" class="fa fa-linkedin w3-hover-opacity"></a>
+	</div>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main mypage-content">
+  <div class="w3-row-padding w3-margin-bottom">
+		<div class="w3-row-padding" style="margin:0 -16px">
+			<div class="w3-third">
+				<h5>Oscar Winners</h5>
+				<!--<img src="TheHandmaid'sTale.jpg" style="width:250px"  alt="Google Regional Map">-->
+			</div>
+			<!--<iframe width="520" height="370" style="margin-top:46px" src="https://www.youtube.com/embed/PJTonrzXTJs">
+			</iframe>-->
+		</div>
+	</div>
+  
+  <div class="w3-card-4 w3-margin w3-white">
+	<div class="w3-col m3 s4 boxobject">
+		<img class="mypicture" src="ShapeOfWater.jpg" alt="ShapeOfWater">
+	</div>
+	<div class="w3-col m9 s8 boxobject">
+		<iframe class="antman" src="https://www.youtube.com/embed/XFYWazblaUA" onload="this.style.height=this.contentDocument.body.scrollHeight +'px';">
+		</iframe>
+	</div>
+    <div class="w3-container">
+      <h3><b>	 </b></h3>
+      <h5> Adventure, Drama, Fantasy  <span class="w3-opacity">  2017-Present </span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity.</p>
+	  <h5 style="display:inline">Director: </h5>
+	  <a href="https://www.imdb.com/name/nm0868219/?ref_=adv_li_dr_0">
+		<span class="myspanhref">Guillermo del Toro</span>
+	  </a>
+	  <br>
+	  <h5 style="display:inline"> Stars: </h5>
+	  <a href="https://www.imdb.com/name/nm1020089/?ref_=adv_li_st_0">
+		<span class="myspanhref">Sally Hawkins </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm0818055/?ref_=adv_li_st_1">
+		<span class="myspanhref">Octavia Spencer </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm0788335/?ref_=adv_li_st_2">
+		<span class="myspanhref">Michael Shannon </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm0427964/?ref_=adv_li_st_3">
+		<span class="myspanhref">Doug Jones </span>
+	  </a>
+      <div class="w3-row">
+			<div class="w3-col m8 s12">
+			<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="window.location.href='https://www.imdb.com/title/tt5580390/?ref_=adv_li_i'"><b>READ MORE »</b></button></p>
+			</div>
+			<div class="w3-col m4 w3-hide-small">
+			<p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+	
+	<div class="w3-card-4 w3-margin w3-white">
+	<div class="w3-col m3 s4 boxobject">
+		<img class="mypicture" src="MoonLight.jpg" alt="MoonLight">
+	</div>
+	<div class="w3-col m9 s8 boxobject">
+		<iframe class="antman" src="https://www.youtube.com/embed/9NJj12tJzqc" onload="this.style.height=this.contentDocument.body.scrollHeight +'px';">
+		</iframe>
+	</div>
+    <div class="w3-container">
+      <h3><b>Moonlight </b></h3>
+      <h5> Drama  <span class="w3-opacity">  2016-Present </span></h5>
+    </div>
+	<div class="w3-container">
+      <p>A chronicle of the childhood, adolescence and burgeoning adulthood of a young, African-American, gay man growing up in a rough neighborhood of Miami.</p>
+	  <h5 style="display:inline">Director: </h5>
+	  <a href="https://www.imdb.com/name/nm1503575/?ref_=adv_li_dr_0">
+		<span class="myspanhref">Barry Jenkins </span>
+	  </a>
+	  <br>
+	  <h5 style="display:inline"> Stars: </h5>
+	  <a href="https://www.imdb.com/name/nm0991810/?ref_=adv_li_st_0">
+		<span class="myspanhref">Mahershala Ali </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm0365140/?ref_=adv_li_st_1">
+		<span class="myspanhref">Naomie Harris </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm5218990/?ref_=adv_li_st_2">
+		<span class="myspanhref">Trevante Rhodes </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm7683379/?ref_=adv_li_st_3">
+		<span class="myspanhref">Alex R. Hibbert </span>
+	  </a>
+      <div class="w3-row">
+			<div class="w3-col m8 s12">
+			<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="window.location.href='https://www.imdb.com/title/tt4975722/?ref_=adv_li_i'"><b>READ MORE »</b></button></p>
+			</div>
+			<div class="w3-col m4 w3-hide-small">
+			<p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+	
+	<div class="w3-card-4 w3-margin w3-white">
+	<div class="w3-col m3 s4 boxobject">
+		<img class="mypicture" src="Spotlight.jpg" alt="Spotlight">
+	</div>
+	<div class="w3-col m9 s8 boxobject">
+		<iframe class="antman" src="https://www.youtube.com/embed/EwdCIpbTN5g" onload="this.style.height=this.contentDocument.body.scrollHeight +'px';">
+		</iframe>
+	</div>
+    <div class="w3-container">
+      <h3><b>Spotlight </b></h3>
+      <h5> Crime, Drama, History  <span class="w3-opacity">  2015-Present </span></h5>
+    </div>
+	<div class="w3-container">
+      <p>The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core.</p>
+	  <h5 style="display:inline">Director: </h5>
+	  <a href="https://www.imdb.com/name/nm0565336/?ref_=adv_li_dr_0">
+		<span class="myspanhref">Tom McCarthy </span>
+	  </a>
+	  <br>
+	  <h5 style="display:inline"> Stars: </h5>
+	  <a href="https://www.imdb.com/name/nm0749263/?ref_=adv_li_st_0">
+		<span class="myspanhref">Mark Ruffalo </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm0000474/?ref_=adv_li_st_1">
+		<span class="myspanhref">Michael Keaton </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm1046097/?ref_=adv_li_st_2">
+		<span class="myspanhref">Rachel McAdams </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm0000630/?ref_=adv_li_st_3">
+		<span class="myspanhref">Liev Schreiber </span>
+	  </a>
+      <div class="w3-row">
+			<div class="w3-col m8 s12">
+			<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="window.location.href='https://www.imdb.com/title/tt1895587/?ref_=adv_li_i'"><b>READ MORE »</b></button></p>
+			</div>
+			<div class="w3-col m4 w3-hide-small">
+			<p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+		<div class="w3-card-4 w3-margin w3-white">
+	<div class="w3-col m3 s4 boxobject">
+		<img class="mypicture" src="Birdman.jpg" alt="Birdman">
+	</div>
+	<div class="w3-col m9 s8 boxobject">
+		<iframe class="antman" src="https://www.youtube.com/embed/uJfLoE6hanc" onload="this.style.height=this.contentDocument.body.scrollHeight +'px';">
+		</iframe>
+	</div>
+    <div class="w3-container">
+      <h3><b> Birdman or (The Unexpected Virtue of Ignorance) </b></h3>
+      <h5> Comedy, Drama  <span class="w3-opacity">  2014-Present </span></h5>
+    </div>
+	<div class="w3-container">
+      <p>A washed-up actor, who once played an iconic superhero, attempts to revive his career by writing and starring in his very own Broadway play.</p>
+	  <h5 style="display:inline">Director: </h5>
+	  <a href="https://www.imdb.com/name/nm0327944/?ref_=adv_li_dr_0">
+		<span class="myspanhref"> Alejandro G. Iñárritu </span>
+	  </a>
+	  <br>
+	  <h5 style="display:inline"> Stars: </h5>
+	  <a href="https://www.imdb.com/name/nm0000474/?ref_=adv_li_st_0">
+		<span class="myspanhref">Michael Keaton </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm0302108/?ref_=adv_li_st_1">
+		<span class="myspanhref">Zach Galifianakis </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm0001570/?ref_=adv_li_st_2">
+		<span class="myspanhref">Edward Norton </span>
+	  </a>
+	  <a href="https://www.imdb.com/name/nm2057859/?ref_=adv_li_st_3">
+		<span class="myspanhref">Andrea Riseborough </span>
+	  </a>
+      <div class="w3-row">
+			<div class="w3-col m8 s12">
+			<p><button class="w3-button w3-padding-large w3-white w3-border" onclick="window.location.href='https://www.imdb.com/title/tt2562232/?ref_=adv_li_tt'"><b>READ MORE »</b></button></p>
+			</div>
+			<div class="w3-col m4 w3-hide-small">
+			<p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+			</div>
+		</div>
+		</div>
+	</div>
+  <!-- End page content -->
+</div>
+
+<script>
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+		if(overlayBg.style.display == "block"){
+			overlayBg.style.display = "none";
+			$('#mySidebar').animate({
+			width:"0px"
+		}, 1000);
+		}
+		else {
+			overlayBg.style.display = "block";
+			document.getElementById("mySidebar").style.display = "block";
+			$('#mySidebar').animate({
+			width:"300px"
+		}, 1000);
+		}
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+	overlayBg.style.display = "none";
+	$('#mySidebar').stop().animate({
+		width:"0px"
+		}, 1000);
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
